@@ -133,7 +133,7 @@ native-clean:
 loop:
 	@$(SCRIPTS_DIR)/build-loop.sh
 
-# PNG per slide + PowerPoint file, for pasting into other decks.
+# PNG per slide, for pasting into other decks.
 export:
 	@$(SCRIPTS_DIR)/export-office.sh
 
@@ -186,7 +186,7 @@ help:
 	@echo "🔧 Native (no container, requires Node.js):"
 	@echo "  native-build      - Build without a container"
 	@echo "  loop              - Build auto-advancing HTML for the booth screen"
-	@echo "  export            - Export one PNG per slide and a PowerPoint file"
+	@echo "  export            - Export one PNG per slide"
 	@echo "  pptx-auto         - Auto-convert slides.md to an editable PowerPoint (Marp, needs LibreOffice)"
 	@echo "  pptx              - Build a native, editable PowerPoint (build/slides-native.pptx)"
 	@echo "  native-clean      - Clean without a container"

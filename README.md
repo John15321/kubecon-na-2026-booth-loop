@@ -23,11 +23,10 @@ to pause and resume. The deck wraps from the last slide back to the first.
 ## Export for PowerPoint
 
 ```sh
-make export       # -> build/png/slide.NNN.png (2560x1440) and build/slides.pptx
+make export       # -> build/png/slide.NNN.png (2560x1440)
 ```
 
-The `.pptx` has one full-slide image per slide, so it looks identical but is not
-text-editable. Use the PNGs to paste slides into another deck.
+Use the PNGs to paste slides into another deck.
 
 For a native, editable PowerPoint (real text boxes, cards and pictures), run:
 

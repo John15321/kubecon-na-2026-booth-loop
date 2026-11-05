@@ -31,7 +31,6 @@ assets/logos/external/other/original/
 # Downloaded QR archive (extracted copies live in assets/qr/)
 *.zip
 build/png/
-build/slides.pptx
 build/slides-native.pptx
 build/pptx-assets/
 build/slides-auto.pptx
