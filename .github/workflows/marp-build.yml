@@ -27,6 +27,15 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
+      - name: Install LibreOffice (for the PowerPoint export)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libreoffice-impress
+          sudo apt-get install -y --no-install-recommends librsvg2-bin
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
       - name: Build slides and gather artifacts
         run: |
           # Make scripts executable
@@ -34,6 +43,7 @@ jobs:
 
           # GitHub runners don't have Podman; use the native (host Node) build path.
           make native-clean
+          make export pptx
           make native-artifacts
 
           # List generated files for debugging
@@ -52,15 +62,19 @@ jobs:
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: marp-slides-pdf-${{ github.run_number }}
-          path: artifacts/*.pdf
+          name: marp-slides-${{ github.run_number }}
+          path: |
+            artifacts/*.pdf
+            artifacts/*.pptx
           retention-days: 30
 
       - name: Create Release and Upload Assets
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v1
         with:
-          files: artifacts/*.pdf
+          files: |
+            artifacts/*.pdf
+            artifacts/*.pptx
           name: "Marp Slides ${{ github.ref_name }}"
           body: |
             ## Marp Slides Release ${{ github.ref_name }}
