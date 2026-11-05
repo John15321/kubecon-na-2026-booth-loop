@@ -18,6 +18,28 @@ chromium --kiosk "file://$PWD/build/booth-loop/index.html?interval=10"
 `?interval=SECONDS` sets the time per slide (default 10). Click or press Space
 to pause and resume. The deck wraps from the last slide back to the first.
 
+## Export for PowerPoint
+
+```sh
+make export       # -> build/png/slide.NNN.png (2560x1440) and build/slides.pptx
+```
+
+The `.pptx` has one full-slide image per slide, so it looks identical but is not
+text-editable. Use the PNGs to paste slides into another deck.
+
+For a native, editable PowerPoint (real text boxes, cards and pictures), run:
+
+```sh
+make pptx         # -> build/slides-native.pptx (needs uv and rsvg-convert)
+```
+
+It is built by `scripts/build-pptx.py` and mirrors the Marp slides by hand, so
+keep the two in sync when you change content.
+
+To skip that, `make pptx-auto` converts `slides.md` automatically with Marp's
+experimental editable export (needs LibreOffice) into `build/slides-auto.pptx`.
+It is good but not perfect: expect small glitches such as card shadows.
+
 ## Build
 
 The recommended path is Podman + `make`. Everything runs inside a small container image so the host only needs `podman` and `make`.

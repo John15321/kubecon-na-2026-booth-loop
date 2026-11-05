@@ -1,7 +1,7 @@
 # Makefile for Marp Slides, works with Podman (preferred) or Docker.
 
 .PHONY: all build clean artifacts help test ci-build ci-artifacts setup \
-        native-build loop native-clean native-artifacts watch preview shell \
+        native-build loop export pptx pptx-auto native-clean native-artifacts watch preview shell \
         image image-rebuild nuke
 
 # Configuration
@@ -131,6 +131,19 @@ native-clean:
 loop:
 	@$(SCRIPTS_DIR)/build-loop.sh
 
+# PNG per slide + PowerPoint file, for pasting into other decks.
+export:
+	@$(SCRIPTS_DIR)/export-office.sh
+
+# Automatic Marp -> editable PowerPoint (needs LibreOffice). Experimental.
+pptx-auto:
+	@mkdir -p build
+	@npx --yes @marp-team/marp-cli@4.1.2 --pptx --pptx-editable --html --allow-local-files --no-stdin slides.md -o build/slides-auto.pptx --theme-set themes
+
+# Native, fully editable PowerPoint (needs uv and rsvg-convert).
+pptx:
+	@uv run --with python-pptx python $(SCRIPTS_DIR)/build-pptx.py
+
 native-artifacts: native-build
 	@echo "📦 Gathering artifacts (native)..."
 	@$(SCRIPTS_DIR)/gather-artifacts.sh
@@ -171,6 +184,9 @@ help:
 	@echo "🔧 Native (no container, requires Node.js):"
 	@echo "  native-build      - Build without a container"
 	@echo "  loop              - Build auto-advancing HTML for the booth screen"
+	@echo "  export            - Export one PNG per slide and a PowerPoint file"
+	@echo "  pptx-auto         - Auto-convert slides.md to an editable PowerPoint (Marp, needs LibreOffice)"
+	@echo "  pptx              - Build a native, editable PowerPoint (build/slides-native.pptx)"
 	@echo "  native-clean      - Clean without a container"
 	@echo "  native-artifacts  - Gather artifacts without a container"
 	@echo ""
