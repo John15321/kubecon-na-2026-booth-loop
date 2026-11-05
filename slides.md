@@ -29,6 +29,13 @@ section.qrs .qr-row { margin-top: 28px; }
 section.qrs p.where { margin: 22px 0 8px 0; }
 section.qrs p.meetings { display: flex; gap: 40px; margin: 0; font-size: 22px; color: #fff; }
 section.qrs p.meetings strong { color: #09BAC8; }
+section.booth-title { padding: 70px 100px 60px; }
+section.booth-title h1 { background-size: 150px auto; padding: 190px 0 0 0; font-size: 84px; max-width: 100%; white-space: nowrap; }
+section.booth-title h2 { font-size: 42px; margin: 20px 0 auto 0; max-width: 100%; }
+section.booth-title p.event { font-size: 34px; font-weight: 700; color: #09BAC8; padding-bottom: 10px; }
+section.booth-title p.where { font-size: 28px; padding-bottom: 0; }
+section.qrs p.where { font-size: 30px !important; }
+section.qrs p.meetings { font-size: 26px !important; }
 section.designed {
   background-image: url('assets/backgrounds/flatcar-staircase-right.svg');
   background-repeat: no-repeat;
@@ -47,30 +54,15 @@ section.designed .card p.title { margin: 0 0 14px 0; color: #fff; font-size: 40p
 section.designed .card p.sub { margin: 0; color: #C9CEDD; font-size: 26px; line-height: 1.35; }
 </style>
 
-<!-- _class: lead qrs -->
+<!-- _class: cover booth-title -->
 <!-- _paginate: false -->
 
-<div class="qr-head">
-  <img src="assets/logos/flatcar-logotype/icon/color/flatcar-icon-color.svg" alt="Flatcar">
-  <div>
-    <h1>Flatcar Container Linux</h1>
-    <h2>A secure, minimal Linux for containers. Scan and come talk to us!</h2>
-  </div>
-</div>
+# Flatcar Container Linux
 
-<div class="qr-row">
-  <div class="qr-card"><img src="assets/qr/flatcar_org.png" alt="flatcar.org"><p>Website<span>flatcar.org</span></p></div>
-  <div class="qr-card"><img src="assets/qr/flatcar_gh.png" alt="GitHub"><p>GitHub<span>flatcar/Flatcar</span></p></div>
-  <div class="qr-card"><img src="assets/qr/flatcar_discord.png" alt="Discord"><p>Discord<span>Chat with the community</span></p></div>
-  <div class="qr-card"><img src="assets/qr/flatcar_learning_series.png" alt="Learning series"><p>Learning series<span>Get started with Flatcar</span></p></div>
-</div>
+## A secure, minimal Linux for containers
 
+<p class="event">KubeCon + CloudNativeCon North America 2026</p>
 <p class="where"><strong>Project Pavilion, kiosk P-8A</strong> · Hall 5, Cosmic Canyon Zone</p>
-
-<p class="meetings">
-  <span><strong>Office hours</strong> · every 2nd Thu, 16:30 CEST</span>
-  <span><strong>Dev sync</strong> · every 4th Thu, 16:30 CEST</span>
-</p>
 
 ---
 
@@ -134,3 +126,30 @@ section.designed .card p.sub { margin: 0; color: #C9CEDD; font-size: 26px; line-
 </div>
 
 Plus bare metal, and many more.
+
+---
+
+<!-- _class: lead qrs -->
+<!-- _paginate: false -->
+
+<div class="qr-head">
+  <img src="assets/logos/flatcar-logotype/icon/color/flatcar-icon-color.svg" alt="Flatcar">
+  <div>
+    <h1>Come talk to us</h1>
+    <h2>Scan a code to find the community, the code and the docs</h2>
+  </div>
+</div>
+
+<div class="qr-row">
+  <div class="qr-card"><img src="assets/qr/flatcar_org.png" alt="flatcar.org"><p>Website<span>flatcar.org</span></p></div>
+  <div class="qr-card"><img src="assets/qr/flatcar_gh.png" alt="GitHub"><p>GitHub<span>flatcar/Flatcar</span></p></div>
+  <div class="qr-card"><img src="assets/qr/flatcar_discord.png" alt="Discord"><p>Discord<span>Chat with the community</span></p></div>
+  <div class="qr-card"><img src="assets/qr/flatcar_learning_series.png" alt="Learning series"><p>Learning series<span>Get started with Flatcar</span></p></div>
+</div>
+
+<p class="where"><strong>Find us at the Project Pavilion, kiosk P-8A</strong> · Hall 5, Cosmic Canyon Zone</p>
+
+<p class="meetings">
+  <span><strong>Office hours</strong> · every 2nd Thu, 16:30 CEST</span>
+  <span><strong>Dev sync</strong> · every 4th Thu, 16:30 CEST</span>
+</p>

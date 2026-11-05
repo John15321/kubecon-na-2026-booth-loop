@@ -4,9 +4,11 @@ Looping slide deck for the Flatcar kiosk at KubeCon + CloudNativeCon North
 America 2026 (Project Pavilion, kiosk P-8A). Rebuilt from the original
 PowerPoint (`reference/original-powerpoint.pdf`) on the Flatcar Marp theme.
 
-Slides: a combined title and QR slide, secure minimal Linux (with the CNCF
-banner), designed for, and runs everywhere. The first slide carries four QR codes (`assets/qr/`: website, GitHub,
-Discord, learning series).
+Slides: a title slide, secure minimal Linux (with the CNCF banner), designed
+for, runs everywhere, and a closing community slide that carries four QR codes
+(`assets/qr/`: website, GitHub, Discord, learning series) plus the booth
+location and meeting times. The loop wraps from the community slide back to
+the title.
 
 ## Run it on a loop
 

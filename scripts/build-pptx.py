@@ -110,15 +110,44 @@ def header(slide, title):
             name="Flatcar logo")
 
 
-def slide_qr(prs):
+def staircase(slide):
+    """Same geometry as the Marp theme: 10in wide art, anchored right, bleeding
+    off the bottom; cropped so nothing hangs off the slide."""
+    stairs = raster(ASSETS / "backgrounds/flatcar-staircase-right.svg", 1400)
+    left, top, vis_w, vis_h = SW - 9.37, 1.39, 9.37, SH - 1.39
+    pic = slide.shapes.add_picture(str(stairs), Inches(left), Inches(top), Inches(vis_w),
+                                   Inches(vis_h))
+    pic.crop_right = 0.063
+    pic.crop_bottom = 0.5
+    pic.name = "Staircase"
+
+
+def slide_title(prs):
+    s = prs.slides.add_slide(prs.slide_layouts[6])
+    fill_bg(s, NAVY)
+    staircase(s)
+    picture(s, ASSETS / "logos/flatcar-logotype/icon/color/flatcar-icon-color.svg",
+            1.04, 0.7, 1.56, 1.1, align="left", name="Flatcar logo")
+    text(s, 1.04, 2.55, 11.2, 1.2, "Flatcar Container Linux", 63, CYAN, bold=True,
+         name="Title")
+    text(s, 1.04, 4.35, 11.2, 0.75, "A secure, minimal Linux for containers", 32, WHITE,
+         bold=True, name="Subtitle")
+    text(s, 1.04, 5.7, 11.2, 0.5, "KubeCon + CloudNativeCon North America 2026", 25, CYAN,
+         bold=True, name="Event")
+    text(s, 1.04, 6.4, 11.2, 0.45,
+         [("Project Pavilion, kiosk P-8A", True), (" · Hall 5, Cosmic Canyon Zone", False)],
+         21, WHITE, name="Location")
+
+
+def slide_community(prs):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     fill_bg(s, NAVY)
     picture(s, ASSETS / "logos/flatcar-logotype/icon/color/flatcar-icon-color.svg",
             MARGIN, 0.5, 1.6, 1.1, align="left", name="Flatcar logo")
-    text(s, 2.65, 0.5, 9.5, 0.7, "Flatcar Container Linux", 40, CYAN, bold=True,
+    text(s, 2.65, 0.5, 9.5, 0.7, "Come talk to us", 40, CYAN, bold=True,
          name="Title")
     text(s, 2.65, 1.2, 9.8, 0.45,
-         "A secure, minimal Linux for containers. Scan and come talk to us!",
+         "Scan a code to find the community, the code and the docs",
          18, WHITE, bold=True, name="Subtitle")
 
     cards = [
@@ -141,7 +170,8 @@ def slide_qr(prs):
              name=f"{label} caption")
 
     text(s, MARGIN, 6.1, 11.5, 0.4,
-         [("Project Pavilion, kiosk P-8A", True), (" · Hall 5, Cosmic Canyon Zone", False)],
+         [("Find us at the Project Pavilion, kiosk P-8A", True),
+          (" · Hall 5, Cosmic Canyon Zone", False)],
          19, WHITE, name="Location")
     text(s, MARGIN, 6.65, 11.5, 0.35,
          [("Office hours", True), (" · every 2nd Thu, 16:30 CEST     ", False),
@@ -173,15 +203,7 @@ def slide_bullets(prs):
 def slide_designed(prs):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     fill_bg(s, NAVY)
-    # Same geometry as the Marp theme: 10in wide art, anchored right, bleeding
-    # off the bottom; cropped so nothing hangs off the slide.
-    stairs = raster(ASSETS / "backgrounds/flatcar-staircase-right.svg", 1400)
-    left, top, vis_w, vis_h = SW - 9.37, 1.39, 9.37, SH - 1.39
-    pic = s.shapes.add_picture(str(stairs), Inches(left), Inches(top), Inches(vis_w),
-                               Inches(vis_h))
-    pic.crop_right = 0.063
-    pic.crop_bottom = 0.5
-    pic.name = "Staircase"
+    staircase(s)
     text(s, MARGIN, 1.5, 10, 0.35, "FLATCAR CONTAINER LINUX", 14, CYAN, bold=True,
          name="Kicker")
     text(s, MARGIN, 1.9, 10, 0.9, "Designed for", 40, WHITE, bold=True, name="Title")
@@ -231,10 +253,11 @@ def main():
     prs = Presentation()
     prs.slide_width = Inches(SW)
     prs.slide_height = Inches(SH)
-    slide_qr(prs)
+    slide_title(prs)
     slide_bullets(prs)
     slide_designed(prs)
     slide_everywhere(prs)
+    slide_community(prs)
     OUT.parent.mkdir(exist_ok=True)
     prs.save(OUT)
     print(f"✅ Native PowerPoint: {OUT.relative_to(ROOT)}")
