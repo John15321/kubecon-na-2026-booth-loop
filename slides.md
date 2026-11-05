@@ -12,7 +12,8 @@ author: Flatcar Maintainers
 section.booth ul li { font-size: 36px; line-height: 1.25; margin-bottom: 16px; }
 section.booth h1 { font-size: 58px; }
 section.booth > p { margin-top: 30px; font-size: 34px; text-align: center; font-weight: 700; }
-section.booth .cncf-banner { margin-top: 10px; }
+section.booth .cncf-banner { margin-top: 30px; }
+section.booth.centered { justify-content: center; padding-top: 178px; }
 section.booth .cncf-banner img { max-height: 90px; width: auto; margin: 0 auto; }
 section.qrs { padding: 50px 70px; justify-content: center; }
 section.qrs .qr-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; width: 100%; margin-top: 24px; }
@@ -66,7 +67,7 @@ section.designed .card p.sub { margin: 0; color: #C9CEDD; font-size: 26px; line-
 
 ---
 
-<!-- _class: booth -->
+<!-- _class: booth centered -->
 
 # A secure, minimal Linux for containers
 
