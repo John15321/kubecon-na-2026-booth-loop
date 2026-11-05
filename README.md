@@ -37,10 +37,6 @@ make pptx         # -> build/slides-native.pptx (needs uv and rsvg-convert)
 It is built by `scripts/build-pptx.py` and mirrors the Marp slides by hand, so
 keep the two in sync when you change content.
 
-To skip that, `make pptx-auto` converts `slides.md` automatically with Marp's
-experimental editable export (needs LibreOffice) into `build/slides-auto.pptx`.
-It is good but not perfect: expect small glitches such as card shadows.
-
 ## Build
 
 The recommended path is Podman + `make`. Everything runs inside a small container image so the host only needs `podman` and `make`.

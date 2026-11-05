@@ -27,10 +27,9 @@ jobs:
       - name: Install dependencies
         run: npm ci || npm install
 
-      - name: Install LibreOffice (for the PowerPoint export)
+      - name: Install rsvg-convert (for the PowerPoint export)
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libreoffice-impress
           sudo apt-get install -y --no-install-recommends librsvg2-bin
 
       - name: Install uv
